@@ -40,11 +40,11 @@ pipeline {
         }
 
         stage('Plan') {
-            // when{
-            //     expression{
-            //         params.Create
-            //     }
-            // }
+            when{
+                expression{
+                    params.Create
+                }
+            }
             steps {
                 sh """
                     cd terraform
@@ -54,16 +54,16 @@ pipeline {
         }
 
         stage('Apply') {
-            when{
-                expression{
-                    params.Create
-                }
-            }
+            // when{
+            //     expression{
+            //         params.Create
+            //     }
+            // }
             steps {
-                sh """
-                    cd terraform
-                    terraform apply -var-file=${params.environment}/${params.environment}.tfvars -var="app_version=${params.version}" -auto-approve
-                """
+                // sh """
+                //     cd terraform
+                //     terraform apply -var-file=${params.environment}/${params.environment}.tfvars -var="app_version=${params.version}" -auto-approve
+                // """
             }
         }
         stage('Destroy') {
