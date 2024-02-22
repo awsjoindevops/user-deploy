@@ -68,11 +68,11 @@ pipeline {
         //     }
         // }
         stage('Destroy') {
-            when{
-                expression{
-                    params.Destroy
-                }
-            }
+            // when{
+            //     expression{
+            //         params.Destroy
+            //     }
+            // }
             steps {
                 sh """
                     cd terraform
