@@ -3,6 +3,7 @@ pipeline {
         node {
             label 'AGENT-1'
         }
+
     }
     // environment { 
     //     packageVersion = ''
@@ -53,25 +54,25 @@ pipeline {
             }
         }
 
-        stage('Apply') {
+        // stage('Apply') {
+        //     // when{
+        //     //     expression{
+        //     //         params.Create
+        //     //     }
+        //     // }
+        //     steps {
+        //         // sh """
+        //         //     cd terraform
+        //         //     terraform apply -var-file=${params.environment}/${params.environment}.tfvars -var="app_version=${params.version}" -auto-approve
+        //         // """
+        //     }
+        // }
+        stage('Destroy') {
             // when{
             //     expression{
-            //         params.Create
+            //         params.Destroy
             //     }
             // }
-            steps {
-                // sh """
-                //     cd terraform
-                //     terraform apply -var-file=${params.environment}/${params.environment}.tfvars -var="app_version=${params.version}" -auto-approve
-                // """
-            }
-        }
-        stage('Destroy') {
-            when{
-                expression{
-                    params.Destroy
-                }
-            }
             steps {
                 sh """
                     cd terraform
